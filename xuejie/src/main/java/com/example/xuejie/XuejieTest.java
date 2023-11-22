@@ -8,10 +8,17 @@ public class XuejieTest {
     /**
      * 计算自身的平方
      */
-public int calcutate(int number){
+public int calculate_square(int number){
 
     return number*number;
 }
+
+public int calculate_double(int number){
+
+    return number+number;
+}
+
+
 
 }
 
