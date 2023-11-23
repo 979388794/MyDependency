@@ -1,15 +1,31 @@
 plugins {
     id 'com.android.library'
+    id 'maven-publish'
+}
+
+group = 'com.github.jitpack'
+version = '1.0'
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.jitpack'
+                artifactId = 'android-example'
+                version = '1.0'
+            }
+        }
+    }
 }
 
 android {
     namespace 'com.example.xuejie'
     compileSdk 33
-
     defaultConfig {
         minSdk 29
         targetSdk 33
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -27,7 +43,6 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.10.0'
     testImplementation 'junit:junit:4.13.2'
